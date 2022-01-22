@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>器材信息管理</title>
+    <link data-n-head="ssr" rel="icon" sizes="192x192" href="image/hohai2.png">
+    <link type="text/css" rel="styleSheet" href="sign_in/sign_in.css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="baoxiu_manage/baoxiu_manage_css.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/alert_style.css" rel="stylesheet" type="text/css"/>
+    <script src="buy/buy_js.js"></script>
+    <script src="buy/buyPage.js"></script>
+</head>
+<!--管理页面头部-->
+<body style="background-color:white" onload="loadBuyInfos()">
+<div class="outside-crisis-page">
+    <header id="header3" class="width-guard">
+        <a href="#" class="peace-in-crisis-entrance">
+            采购信息管理</a>
+        <div class="container">
+            <button aria-label="Show Navigations Modal" class="show-navs-btn">
+            </button>
+            <div class="navigations-container">
+                <div class="navigations">
+                    <a href="homepage.html" title="首页" class="navigation">首页</a>
+                    <a href="equipManage.html" title="器材管理" class="navigation">器材管理</a>
+                    <a href="baoXiuManage.html" title="器材管理" class="navigation">报修管理</a>
+                    <a href="buyManage.html" title="器材管理" class="navigation active">采购管理</a>
+                    <a href="baoxiu_news.html" title="最新动态" class="navigation">最新动态</a>
+                    <a href="sign_up.html" title="注册管理员" class="navigation">注册管理员</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div class="alert"></div>
+
+<!--查询新建功能模块-->
+<div style="display:flex;justify-content:center;">
+    <form>
+        <label>订单编号:<input class="form-control" onblur="checkSearchBuyId('searchBuyId','lblWarnSearchId')"
+                           type="text" name="订单编号"
+                           id="searchBuyId"></label>
+        <label id="lblWarnSearchId" class="lblWarn"></label>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <label>器材名称:<input class="form-control" onblur="checkSearchEquipName('searchEquipName','lblWarnSearchName')"
+                           type="text" name="器材名称"
+                           id="searchEquipName"></label>
+        <label id="lblWarnSearchName" class="lblWarn"></label>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <button type="button" class="btn btn-info" onclick="loadSearchResult()">查询</button>
+        &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <!--弹出新增背景层DIV-->
+        <input type="button" class="btn btn-info" value="新增" onclick="ShowDiv('MyDiv','fade')">
+    </form>
+
+</div>
+<div class="btn-group" data-toggle="buttons" style="float: right">
+    <label class="btn btn-info">
+        <input type="radio" name="options" id="allBuy" checked onclick="loadBuyInfos()">全部
+    </label>
+</div>
+<br/>
+
+<!--展示订单信息的表-->
+<table class="table table-striped table-hover " id="buyTable">
+    <tr>
+        <th>订单编号</th>
+        <th>器材名称</th>
+        <th>购买单位</th>
+        <th>销售厂家</th>
+        <th>购买数量</th>
+        <th>总共金额</th>
+        <th>购买时间</th>
+        <th>操作</th>
+    </tr>
+</table>
+
+<!--新建订单信息背景层DIV-->
+<div id="fade" class="black_overlay2"></div>
+<div id="MyDiv" class="white_content">
+    <!--关闭按钮-->
+    <div style="background-color:#87CEFA;height:30px">
+        <h3 style="font-size: 20px;display:inline">请输入</h3>
+        <button style="float: right;font-size: 16px;background-color:#87CEFA;" onclick="CloseDiv('MyDiv','fade')">关闭
+        </button>
+    </div>
+
+    <!--输入订单信息div-->
+    <div id="div_left" class='div_left'>
+
+        <label for="equipName">器材名称(*): </label>
+        <input class="input2" id="equipName" type="text" name="器材名称"
+               onblur="checkEquipName('equipName','lblWarnEquipName')">
+        <label id="lblWarnEquipName" class="lblWarn"></label><br>
+
+        <label for="buyer">购买单位(*):</label>
+        <select id="buyer" class="input2" name="购买单位">
+            <option value="1" selected>机电学院</option>
+            <option value="2">物联网学院</option>
+            <option value="3">商学院</option>
+        </select><br>
+
+        <label for="seller">销售厂家(*):</label>
+        <select id="seller" class="input2" name="销售厂家">
+            <option value="1" selected>华为</option>
+            <option value="2">台积电</option>
+            <option value="3">泰克</option>
+            <option value="4">富士康</option>
+            <option value="5">其他</option>
+        </select><br>
+
+        <label for="num">购买数量(*):</label>
+        <input id="num" class="input2" type="text" name="总共金额" onblur="checkBuyNum('num', 'lblWarnNum')">
+        <label id="lblWarnNum" class="lblWarn"></label><br>
+
+        <label for="money">总共金额(*):</label>
+        <input id="money" class="input2" type="text" name="总共金额" onblur="checkMoney('money', 'lblWarnMoney')">
+        <label id="lblWarnMoney" class="lblWarn"></label><br>
+
+        <label for="buyDate">购买日期(*): </label>
+        <input readonly="readonly" id="buyDate" class="input2" type="text" name="购买日期">
+        <script>document.getElementById('buyDate').value = new Date().toLocaleString();</script>
+    </div>
+
+    <div class="save_div">
+        <input type="button" class="btn btn-warning" onclick="CloseDiv('MyDiv','fade');" value="取消">
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="button" class="btn btn-success" onclick="addBuy()" value="保存">
+    </div>
+</div>
+
+<!--修改器材信息背景层DIV-->
+<div id="fade2" class="black_overlay2"></div>
+<div id="MyDiv2" class="white_content">
+
+    <!--关闭按钮-->
+    <div id="header2" style="background-color:#87CEFA;height:30px">
+        <h3 style="font-size: 20px;display:inline">请输入</h3>
+        <button style="float: right;font-size: 16px;background-color:#87CEFA;" onclick="CloseDiv('MyDiv2','fade2')">关闭
+        </button>
+    </div>
+
+    <!--信息录入div-->
+    <div id="div_left2" class='div_left'>
+
+        <label for="buyId">订单编号(*):</label>
+        <input id="buyId" class="input2" type="text" name="订单编号"
+        >
+        <label id="lblWarnBuyId" class="lblWarn"></label><br>
+
+        <label for="equipName2">器材名称(*): </label>
+        <input class="input2" id="equipName2" type="text" name="器材名称"
+        >
+        <label id="lblWarnEquipName2" class="lblWarn"></label><br>
+
+        <label for="buyer2">购买单位(*):</label>
+        <select id="buyer2" class="input2" name="购买单位">
+            <option value="1" selected>机电工程学院</option>
+            <option value="2">物联网工程学院</option>
+            <option value="3">商学院</option>
+        </select><br>
+
+        <label for="seller2">销售厂家(*):</label>
+        <select id="seller2" class="input2" name="销售厂家">
+            <option value="1" selected>华为</option>
+            <option value="2">台积电</option>
+            <option value="3">泰克</option>
+            <option value="4">富士康</option>
+            <option value="5">其他</option>
+        </select><br>
+
+        <label for="num2">购买数量(*):</label>
+        <input id="num2" class="input2" type="text" name="总共金额">
+        <label id="lblWarnNum2" class="lblWarn"></label><br>
+
+        <label for="money2">总共金额(*):</label>
+        <input id="money2" class="input2" type="text" name="总共金额">
+        <label id="lblWarnMoney2" class="lblWarn"></label><br>
+
+        <label for="buyDate2">购买日期(*): </label>
+        <input readonly="readonly" id="buyDate2" class="input2" type="text" name="购买日期">
+    </div>
+
+    <div class="save_div">
+        <input type="button" class="btn btn-warning" onclick="CloseDiv('MyDiv2','fade2')" value="取消">
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="button" class="btn btn-success" onclick="updateBuy()" value="保存">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>登录实验器材管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="hostname" content="">
+    <meta name="user-login" content="">
+    <meta name="theme-color" content="#1e2327">
+    <meta name="color-scheme" content="light dark">
+    <link rel="mask-icon" href="image/hohai2.png" color="#000000">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="image/hohai2.png">
+    <link media="all" rel="stylesheet" href="sign_in/sign_in.css">
+    <script src="sign_in/sign_in_js.js" type="text/javascript"></script>
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <link href="css/alert_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="logged-out env-production page-responsive session-authentication intent-mouse">
+<div class="alert">
+</div>
+<div class="position-relative js-header-wrapper ">
+	  <span class="progress-pjax-loader width-full js-pjax-loader-bar Progress position-fixed">
+		  <span style="background-color: #79b8ff;width: 0;" class="Progress-item progress-pjax-loader-bar "></span>
+	  </span>
+    <div class="header header-logged-out width-full pt-5 pb-4" role="banner">
+        <div class="container clearfix width-full text-center">
+            <a class="header-logo" href=" " aria-label="Homepage"
+               data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+                <img height="48" class="octicon" viewBox="0 0 16 16" width="48" aria-hidden="true"
+                     src="image/hohai2.png"/>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="start-of-content" class="show-on-focus"></div>
+
+<div class="application-main " data-commit-hovercards-enabled="" data-discussion-hovercards-enabled=""
+     data-issue-and-pr-hovercards-enabled="">
+    <main id="js-pjax-container" data-pjax-container="">
+        <div class="auth-form px-3" id="login">
+
+            <form action="" accept-charset="UTF-8" method="post">
+
+                <div class="auth-form-header p-0">
+                    <h1>登录实验器材管理系统</h1>
+                </div>
+
+                <div data-pjax-replace="" id="js-flash-container">
+                    <template class="js-flash-template"></template>
+                </div>
+
+                <div class="auth-form-body mt-3">
+                    <label for="login_field">
+                        帐号
+                    </label>
+                    <input type="text" name="login" id="login_field" class="form-control input-block" tabindex="1"
+                           autocapitalize="off" autocorrect="off" autocomplete="username" autofocus="autofocus"
+                           onblur="isNull('login_field','lblWarnAccount')">
+                    <label id="lblWarnAccount" class="lblWarn"></label>
+                    <label for="password">
+                        密码
+                    </label>
+
+                    <input type="password" name="password" id="password" class="form-control form-control input-block"
+                           tabindex="2" autocomplete="current-password" onblur="isNull('password','lblWarnPassword')">
+                    <label id="lblWarnPassword" class="lblWarn"></label>
+
+                    <!--                    <input type="hidden" class="js-webauthn-support" name="webauthn-support" value="supported">-->
+                    <!--                    <input type="hidden" class="js-webauthn-iuvpaa-support" name="webauthn-iuvpaa-support"-->
+                    <!--                           value="supported">-->
+                    <!--                    <input type="hidden" name="return_to" id="return_to" class="form-control">-->
+                    <!--                    <input type="hidden" name="allow_signup" id="allow_signup" class="form-control">-->
+                    <!--                    <input type="hidden" name="client_id" id="client_id" class="form-control">-->
+                    <!--                    <input type="hidden" name="integration" id="integration" class="form-control">-->
+                    <!--                    <input type="text" name="required_field_bd64" hidden="hidden" class="form-control">-->
+                    <!--                    <input type="hidden" name="timestamp" value="1608166694976" class="form-control">-->
+                    <!--                    <input type="hidden" name="timestamp_secret"-->
+                    <!--                           value="e9ae1f84121a67a54459de79a7517ba7ea1df54aa34480fa72516f9f06dcb6fb"-->
+                    <!--                           class="form-control">-->
+                    <input name="commit" value="登录" tabindex="3" class="btn btn-primary btn-block"
+                           onclick="checkPassword('login_field','password','lblWarnAccount','lblWarnPassword') ">
+                </div>
+            </form>
+
+            <p class="login-callout mt-3">
+                没有帐号?
+                <a data-ga-click="Sign in, switch to sign up"
+                   data-hydro-click="{event_type:authentication.click,payload:{location_in_page:sign in switch to sign up,repository_id:null,auth_type:SIGN_UP,originating_url:}}"
+                   data-hydro-click-hmac="72d062e79bb6ab076a3b88b32943286ea51894183bd812a5038d00013946f239" href=" ">注册一个</a>.
+            </p>
+        </div>
+    </main>
+</div>
+
+<div class="footer container-lg p-responsive py-6 mt-6 f6" role="contentinfo">
+    <ul class="list-style-none d-flex flex-justify-center">
+        <li class="mr-3"><a href="homepage.html " data-ga-click="Footer, go to home, text:terms">首页</a></li>
+        <li class="mr-3"><a href=" " data-ga-click="Footer, go to about, text:privacy">关于</a></li>
+        <li class="mr-3"><a href=" " data-ga-click="Footer, go to privacy, text:security">隐私</a></li>
+        <li><a class="link-gray" data-ga-click="Footer, go to contact, text:contact" href="">联系管理员</a></li>
+    </ul>
+</div>
+
+<template id="site-details-dialog"></template>
+
+<div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+    <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large"
+         style="width:360px;">
+    </div>
+</div>
+
+<div aria-live="polite" class="sr-only"></div>
+
+</body>
+</html>

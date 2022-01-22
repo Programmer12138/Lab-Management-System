@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>报修</title>
+    <link data-n-head="ssr" rel="icon" sizes="192x192" href="image/hohai2.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="baoxiu_js/baoxiu_style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/alert_style.css" rel="stylesheet" type="text/css"/>
+    <script src="baoxiu_js/baoxiu_js.js" type="text/javascript"></script>
+    <script src="baoxiu_js/checkBaoXiu.js" type="text/javascript"></script>
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="alert"></div>
+<!--报修信息背景层DIV-->
+<div id="fade" class="black_overlay3"></div>
+<div id="MyDiv" class="white_content">
+    <!--保存成功提示-->
+    <div style="background-color:#87CEFA;height:30px">
+        <h3 style="font-size: 20px;display:inline;text-align: center">请输入报修信息</h3>
+    </div>
+
+    <!--报修信息录入div-->
+    <div id="div_left" class='div_left'>
+        <label for="status" style="margin-top: 5px;">器材状态(*):</label>
+        <select id="status" class="input2" name="器材状态">
+            <option value="报修中" selected>报修中</option>
+            <option value="已报废">已报废</option>
+        </select><br>
+
+        <label for="equipId">器材编号(*):</label>
+        <input id="equipId" class="input2" type="text" name="器材编号" placeholder="1-50位"
+               onblur="checkBXEquipId('equipId','lblWarnEquipId')">
+        <label id="lblWarnEquipId" class="lblWarn"></label><br>
+
+        <label for="SNO">学生学号(*):</label>
+        <input id="SNO" class="input2" type="text" name="学生学号" onblur="checkSNO('SNO','lblWarnSNO')">
+        <label id="lblWarnSNO" class="lblWarn"></label><br>
+
+        <label for="baoXiuDate">报修时间(*): </label>
+        <input id="baoXiuDate" readonly="readonly" class="input2" type="text" name="添加日期">
+        <script>document.getElementById('baoXiuDate').value = new Date().toLocaleString();
+        </script>
+        <label id="lblWarnBaoXiuDate" class="lblWarn"></label>
+    </div>
+    <!--保存和取消按钮-->
+    <div class="save_div">
+        <a href="homepage.html"><input type="button" class="btn btn-warning" value="取消"></a>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="button" class="btn btn-success" onclick="addBaoXiu()" value="保存">
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="zh" data-hairline="true" data-theme="light" data-react-helmet="data-theme">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>最新动态</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="description" property="og:description" content="给广大师生提供有关实验器材的最新动态，帮助学院管理实验器材">
+    <link rel="shortcut icon" type="image/x-icon" href="image/hohai2.png">
+    <link href="news_css/news.css" rel="stylesheet">
+    <link href="news_css/main.topstory-routes.css" rel="stylesheet">
+    <link href="./news_css/news_style.css" rel="stylesheet">
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="buy_news/buy_news.js"></script>
+</head>
+
+<body class="Topstory-body Topstory-body--old baidu" baidu="1" style="overflow: auto;" data-react-helmet="class">
+<div id="root">
+    <div>
+        <div>
+            <header role="banner" class="Sticky AppHeader" data-za-module="TopNavBar">
+                <div class="AppHeader-inner css-0">
+                    <a class="header-logo" href=" " aria-label="Homepage">
+                        <img height="48" class="octicon" viewBox="0 0 16 16" width="48" aria-hidden="true"
+                             src="image/hohai2.png">
+                    </a><!--校徽-->
+                    <ul role="navigation" class="Tabs AppHeader-Tabs css-0">
+                        <li role="tab" class="Tabs-item AppHeader-Tab Tabs-item--noMeta">
+                            <a class="Tabs-link AppHeader-TabsLink is-active" href="" data-za-not-track-link="true">实验器材最新动态</a>
+                        </li>
+                        <li role="tab" class="Tabs-item AppHeader-Tab Tabs-item--noMeta">
+                            <a class="Tabs-link AppHeader-TabsLink" href="homepage.html" data-za-not-track-link="true">首页</a>
+                        </li>
+                    </ul><!--顶部导航-->
+                    <div class="css-1acwmmj">
+                        <div class="SearchBar AppHeader-SearchBar css-0" role="search" data-za-module="PresetWordItem">
+                            <form class="SearchBar-tool">
+                                <div>
+                                    <div class="Popover">
+                                        <label class="SearchBar-input Input-wrapper Input-wrapper--grey">
+                                            <input type="text" maxlength="100" autocomplete="off" role="combobox"
+                                                   aria-expanded="false" aria-autocomplete="list" id="searchInput"
+                                                   aria-haspopup="true" aria-owns="Popover1-content" class="Input"
+                                                   placeholder="示波器" value="">
+                                            <button aria-label="搜索" type="button"
+                                                    class="Button SearchBar-searchButton Button--primary">
+												<span style="display: inline-flex; align-items: center;">
+													<svg class="Zi Zi--Search SearchBar-searchIcon" fill="currentColor"
+                                                         viewBox="0 0 24 24" width="18" height="18">
+														<path d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z"
+                                                              fill-rule="evenodd"></path>
+													</svg>
+												</span>
+                                            </button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <button type="button" class="Button SearchBar-askButton Button--primary Button--blue"
+                                    onclick="loadNewsSearch()">搜索
+                            </button>
+                        </div>
+                    </div><!--搜索-->
+
+                    <div class="AppHeader-userInfo"><!--消息和头像-->
+                        <div class="Popover">
+                            <!--                            <button aria-label="81条动态" id="Popover17-toggle" aria-haspopup="true" aria-expanded="false"-->
+                            <!--                                    aria-owns="Popover17-content" type="button"-->
+                            <!--                                    class="Button AppHeader-notifications css-79elbk Button&#45;&#45;plain">-->
+                            <!--								<span style="display: inline-flex; align-items: center;">-->
+                            <!--									<svg class="Zi Zi&#45;&#45;Bell" fill="currentColor" viewBox="0 0 24 24" width="22"-->
+                            <!--                                         height="22">-->
+                            <!--										<path d="M4.523 15.076l.804-6.757a6.753 6.753 0 0 1 4.945-5.7 1.823 1.823 0 0 1 3.623 0 6.753 6.753 0 0 1 4.945 5.7l.804 6.757a2.293 2.293 0 0 0 1.712 2.108 1.093 1.093 0 0 1-.297 2.15H3.108a1.093 1.093 0 0 1-.297-2.15 2.293 2.293 0 0 0 1.712-2.108zM12.083 23a2.758 2.758 0 0 1-2.753-2.509.229.229 0 0 1 .232-.24h5.043a.229.229 0 0 1 .232.24 2.759 2.759 0 0 1-2.753 2.51z"></path>-->
+                            <!--									</svg>-->
+                            <!--								</span>-->
+                            <!--                                <div class="css-ybodb">81</div>-->
+                            <!--                            </button>-->
+                        </div>
+                        <div class="AppHeader-profile">
+                            <div class="Popover AppHeader-menu">
+                                <!--                                <button id="Popover15-toggle" aria-haspopup="true" aria-expanded="false"-->
+                                <!--                                        aria-owns="Popover15-content" type="button"-->
+                                <!--                                        class="Button AppHeader-profileEntry Button&#45;&#45;plain">-->
+                                <!--                                    <img class="Avatar AppHeader-profileAvatar AppHeader-profileAvatar&#45;&#45;old" width="30"-->
+                                <!--                                         height="30" src="./image/v2-94b514359fe3aa7681dd7914e1b3d69c_is.jpg" srcset="">-->
+                                <!--                                </button>-->
+                            </div>
+                            <div class="Popover AppHeaderProfileMenu-creatorHintPopover">
+                                <div class="AppHeaderProfileMenu-creatorHintToggler" id="Popover16-toggle"
+                                     aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div><!--顶部导航栏-->
+        <main role="main" class="App-main">
+            <div class="Topstory Topstory--old">
+                <div class="Topstory-container">
+                    <div class="Topstory-mainColumn">
+                        <div class="Topstory-mainColumnCard">
+                            <div class="Card Topstory-noMarginCard Topstory-tabCard">
+                                <nav class="TopstoryTabs Topstory-tabs">
+                                    <a aria-controls="Topstory-recommend"
+                                       class="TopstoryTabs-link" href="baoxiu_news.html">报修相关</a>
+                                    <a aria-controls="Topstory-follow"
+                                       class="TopstoryTabs-link Topstory-tabsLink is-active Topstory-tabsLink"
+                                       href="buy_news.html">采购相关</a>
+                                </nav>
+                                <div>
+                                    <div class="Sticky"></div>
+                                </div>
+                            </div>
+                            <div id="TopstoryContent" class="Topstory-content">
+                                <div class="ListShortcut">
+                                    <div class="Topstory-recommend" data-zop-feedlistfather="0">
+                                        <div class="" id="display_baoxiu_news">
+                                            <script>
+                                                load_buy_news_info();
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--动态列表-->
+                    </div>
+                    <div class="GlobalSideBar GlobalSideBar--old" data-za-detail-view-path-module="RightSideBar"
+                         data-za-extra-module="{}"><!--侧栏-->
+                        <div>
+                            <div class="Sticky" style="">
+                                <div class="Card GlobalWrite GlobalWrite--old">
+                                    <div class="ClubSliderList-header">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" class="ClubSliderList-icon"
+                                             fill="currentColor">
+                                            <path d="M12 2c5.523 0 10 4.477 10 10 0 1.49-.326 2.902-.91 4.172v4.464a.455.455 0 0 1-.454.455h-4.464A9.963 9.963 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2zm0 1.818a8.182 8.182 0 1 0 3.753 15.454h3.52v-3.52A8.182 8.182 0 0 0 12 3.819zm0 4.546a3.636 3.636 0 1 1 0 7.272 3.636 3.636 0 0 1 0-7.272z"
+                                                  fill-rule="evenodd"></path>
+                                        </svg>
+                                        <span>河海大学</span>
+                                    </div>
+                                    <div class="GlobalWrite-navTop">
+                                        <a href="http://www.hhuc.edu.cn/" class="GlobalWrite-topItem" target="_blank"
+                                           rel="noopener noreferrer" title="河海">
+                                            <svg t="1608376610222" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                 xmlns="http://www.w3.org/2000/svg" p-id="1712" width="48" height="48">
+                                                <path d="M259.169 439.689V326.567l-4.55 3.64-0.145 0.096c-14.689 9.788-33.52 6.4-43.65-7.52-9.803-13.472-6.59-31.989 6.84-43.287l0.503-0.416L478.01 91.392c20.846-15.048 48.625-15.199 68.558-0.388l0.529 0.399 259.686 187.575 0.358 0.242c14.047 9.706 17.175 28.8 7.72 42.718l-0.29 0.42-0.305 0.425c-9.791 13.457-28.89 17.175-42.542 8.282l-0.412-0.273-0.13-0.09-0.176-0.063-0.25-0.103-0.255-0.12a4.95 4.95 0 0 1-2.037-1.87l-0.126-0.222-0.036-0.07-3.473-2.777v114.212h106.228c32.115 0 58.586 25.82 59.627 57.682l0.024 0.968 0.008 0.98-0.001 382.386 0.122 0.015c15.164 1.93 26.677 14.394 27.148 30.013l0.015 0.474v0.523c0 17.306-13.522 30.994-30.76 31.27H97.283C79.796 944 66 930.211 66 912.73c0-15.921 11.445-28.78 26.7-30.948l0.463-0.062 0.121-0.015V499.32c0-32.1 25.833-58.559 57.71-59.6l0.968-0.023 0.981-0.008H259.17z m302.307 338.51H459.249V880.37h102.227V778.199zM259.169 502.228H156.942V880.37h102.227V502.228z m251.73-359.019L321.736 279.932c0.51 130.912 0.547 197.228 0.11 198.95l-0.11 401.488h74.945V764.382c0-29.137 25.844-49.404 58.663-49.807l0.996-0.006h110.228c32.26 0 59.117 20.24 59.65 48.94l0.009 0.873-0.001 115.988h76.035V282.604L510.899 143.209z m253.929 359.018v378.142h102.228V502.227H764.828z m-253.92-172.708c63.325 0 114.228 50.877 114.228 114.17 0 62.575-51.272 114.171-114.228 114.171-63.324 0-114.227-50.876-114.227-114.17 0-63.294 50.903-114.171 114.227-114.171z m0 61.45c-28.35 0-51.659 23.296-51.659 51.63 0 28.333 23.31 51.63 51.66 51.63 28.35 0 51.659-23.297 51.659-51.63 0-28.333-23.31-51.63-51.66-51.63z"
+                                                      p-id="1713"></path>
+                                            </svg>
+                                            <div class="GlobalWrite-topTitle">河海大学官网</div>
+                                        </a>
+                                        <div class="GlobalWrite-topItem">
+                                            <a href="http://lib.hhuc.edu.cn/" class="GlobalWrite-topItem"
+                                               target="_blank" rel="noopener noreferrer" title="图书馆">
+                                                <svg t="1608376550757" class="icon" viewBox="0 0 1024 1024"
+                                                     version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2564"
+                                                     width="48" height="48">
+                                                    <path d="M261.888 924.722H142.025c-24.262 0-44-19.738-44-44V140.325c0-24.262 19.738-44 44-44h119.863c24.262 0 44 19.738 44 44v740.397c0 24.261-19.739 44-44 44z m-99.863-64h79.863V160.325h-79.863v700.397zM511.888 928.722H392.025c-24.262 0-44-19.738-44-44V144.325c0-24.262 19.738-44 44-44h119.863c24.262 0 44 19.738 44 44v740.397c0 24.261-19.739 44-44 44z m-99.863-64h79.863V164.325h-79.863v700.397zM763.357 931.53c-21.028 0-39.678-15.164-43.346-36.576l-124.99-729.77c-4.096-23.913 12.026-46.7 35.94-50.796l118.143-20.235c11.574-1.982 23.231 0.668 32.834 7.462 9.602 6.794 15.98 16.908 17.963 28.479l124.991 729.771c1.981 11.57-0.668 23.23-7.461 32.832-6.794 9.603-16.908 15.982-28.479 17.965l-5.402-31.541 5.402 31.541-118.143 20.234a44.295 44.295 0 0 1-7.452 0.634zM661.479 174.092l118.238 690.344 78.717-13.481L740.195 160.61l-78.716 13.482z"
+                                                          fill="" p-id="2565"></path>
+                                                    <path d="M143.063 241.042H249v64H143.063zM400.999 239.802H503v64H400.999zM739.41 742.534l108.002-19.196 11.2 63.015-108.001 19.196z"
+                                                          fill="" p-id="2566"></path>
+                                                </svg>
+                                                <div class="GlobalWrite-topTitle">河海图书馆</div>
+                                            </a>
+                                        </div>
+                                        <a href="http://my.hhu.edu.cn/login.portal" class="GlobalWrite-topItem"
+                                           target="_blank" rel="noopener noreferrer" title="信息门户">
+                                            <svg t="1608376947791" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                 xmlns="http://www.w3.org/2000/svg" p-id="3490" width="48" height="48">
+                                                <path d="M758.943706 967.576661H261.815193c-101.949064-0.122128-184.554862-82.699743-184.705175-184.630019v-563.01211C77.222752 117.976073 159.847339 35.342092 261.815193 35.229358h497.128513c101.977248 0.075156 184.648807 82.709138 184.761542 184.69578v563.01211c-0.216073 101.930275-82.831266 184.498495-184.761542 184.639413zM261.815193 87.998239c-72.844917 0.075156-131.870532 59.100771-131.945688 131.936293v563.01211c0.150312 72.779156 59.157138 131.729615 131.945688 131.804771h497.128513c72.779156-0.075156 131.776587-59.025615 131.936294-131.804771v-563.01211c-0.08455-72.835523-59.100771-131.861138-131.936294-131.936293H261.815193z"
+                                                      p-id="3491"></path>
+                                                <path d="M696.78033 193.517211H585.436771c-58.217688 0.112734-105.349872 47.301284-105.425028 105.518972v83.094312c0.037578 58.245872 47.179156 105.462606 105.425028 105.57534h111.343559c58.170716 0 105.509578-47.329468 105.584734-105.57534v-83.094312c-0.075156-58.274055-47.320073-105.481394-105.584734-105.518972z m52.825248 188.613284a52.834642 52.834642 0 0 1-52.825248 52.825248H585.436771c-28.991413 0-52.693725-23.702312-52.693725-52.825248v-83.094312a52.834642 52.834642 0 0 1 52.693725-52.759486h111.343559a52.825248 52.825248 0 0 1 52.825248 52.759486v83.094312zM348.066055 246.276697H246.192147a26.417321 26.417321 0 1 1 0-52.759486h101.883303a26.389138 26.389138 0 1 1-0.009395 52.759486zM348.066055 435.406679H246.192147a26.398532 26.398532 0 1 1 0-52.759486h101.883303a26.389138 26.389138 0 1 1-0.009395 52.759486zM775.957138 624.564844H246.192147a26.417321 26.417321 0 0 1-0.037578-52.834642h529.811963a26.407927 26.407927 0 1 1 0.028184 52.834642h-0.037578zM585.436771 813.657248H246.192147a26.417321 26.417321 0 1 1 0-52.759487h339.254018a26.407927 26.407927 0 1 1-0.009394 52.759487z"
+                                                      p-id="3492"></path>
+                                            </svg>
+                                            <div class="GlobalWrite-topTitle">信息门户</div>
+                                        </a>
+                                    </div>
+                                </div><!--友情链接-->
+                                <div class="ClubSliderList">
+                                    <div class="ClubSliderList-header">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" class="ClubSliderList-icon"
+                                             fill="currentColor">
+                                            <path d="M12 2c5.523 0 10 4.477 10 10 0 1.49-.326 2.902-.91 4.172v4.464a.455.455 0 0 1-.454.455h-4.464A9.963 9.963 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2zm0 1.818a8.182 8.182 0 1 0 3.753 15.454h3.52v-3.52A8.182 8.182 0 0 0 12 3.819zm0 4.546a3.636 3.636 0 1 1 0 7.272 3.636 3.636 0 0 1 0-7.272z"
+                                                  fill-rule="evenodd"></path>
+                                        </svg>
+                                        <span>实验器材</span>
+                                    </div>
+                                    <div class="ClubSliderList-list">
+                                        <div class="ClubSliderList-item">
+                                            <div class="ClubSliderList-img">
+                                                <img src="./image/img.png" alt="">
+                                            </div>
+                                            <span class="ClubSliderList-name">器材科普</span>
+                                        </div>
+                                        <div class="ClubSliderList-item">
+                                            <div class="ClubSliderList-img">
+                                                <img src="./image/img.png">
+                                            </div>
+                                            <span class="ClubSliderList-name">购买器材</span>
+                                        </div>
+                                        <div class="ClubSliderList-item">
+                                            <div class="ClubSliderList-img">
+                                                <img src="./image/img.png">
+                                            </div>
+                                            <span class="ClubSliderList-name">实验教学</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Card CreatorEntrance GlobalSideBar-creator">
+                                    <div class="ClubSliderList-header">
+                                        <svg width="17" height="17" viewBox="0 0 24 24" class="ClubSliderList-icon"
+                                             fill="currentColor">
+                                            <path d="M12 2c5.523 0 10 4.477 10 10 0 1.49-.326 2.902-.91 4.172v4.464a.455.455 0 0 1-.454.455h-4.464A9.963 9.963 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2zm0 1.818a8.182 8.182 0 1 0 3.753 15.454h3.52v-3.52A8.182 8.182 0 0 0 12 3.819zm0 4.546a3.636 3.636 0 1 1 0 7.272 3.636 3.636 0 0 1 0-7.272z"
+                                                  fill-rule="evenodd"></path>
+                                        </svg>
+                                        <span>动态统计</span>
+                                    </div>
+                                    <a class="CreatorEntrance-link CreatorEntrance-Link--smallIcon" href="" target=""
+                                       data-za-detail-view-id="2288">
+                                        <div class="ProfileSideCreator-analytics">
+                                            <div class="ProfileSideCreator-readCountItem">
+                                                <div class="ProfileSideCreator-readCountTitle">动态总数</div>
+                                                <div id="news-num" class="ProfileSideCreator-readCountNumber"></div>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="CornerButtons">
+            <div class="CornerAnimayedFlex CornerAnimayedFlex--hidden">
+                <button data-tooltip="回到顶部" data-tooltip-position="left" data-tooltip-will-hide-on-click="true"
+                        aria-label="回到顶部" type="button" class="Button CornerButton Button--plain">
+                    <svg class="Zi Zi--BackToTop" aria-label="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24"
+                         height="24">
+                        <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div><!--回到顶部-->
+    </div>
+</div>
+</body>
+</html>
