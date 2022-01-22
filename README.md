@@ -5,3 +5,4 @@
 ![image](https://user-images.githubusercontent.com/72424079/150634816-ec58cc74-5535-47fb-8d9d-03cb96332c76.png)
 ![image](https://user-images.githubusercontent.com/72424079/150634830-a5dc45b6-ecf0-49b1-bf5d-7c1b3fc657e8.png)
 ![image](https://user-images.githubusercontent.com/72424079/150634845-e467f982-6241-46d9-ac60-6da78171f019.png)
+<br>注意，这是一个软件，不仅仅是一个程序，所以，下载源码后不一定能运行成功，要配置tomcat，还要安装配置数据库。如果遇到任何问题，欢迎留言提问。
