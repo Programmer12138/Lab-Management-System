@@ -22,4 +22,14 @@
 <br>
 系统数据库设计E-R图<br>
 ![image](https://user-images.githubusercontent.com/72424079/154386881-7f133473-59fb-4319-b34b-d49b04701484.png)
+<br>
+实现细节与技术摘要：<br>
+如何实现报修功能呢？报修功能就是“点击保存按钮即可把用户填写的保修信息存放在数据库里”。首先，当用户点击“保存”按钮的时候，会执行baoxiu_js.js里面的getAddBaoXiuInfo()函数，baoxiu_js.js文件必须在HTML文档里被引用，且“保存”按钮的onclick函数的必须是getAddBaoXiuInfo()函数，否则点击“保存”按钮不会有用。
+![image](https://user-images.githubusercontent.com/72424079/154390953-4d42309b-98e8-46a8-9b07-6af344ff288e.png)
+在getAddBaoXiuInfo()函数里，会通过document.getElementById.value的方式，获取用户填写的字符串。就比如说用户填写了被报修的器材的编号，那就是通过document.getElementById("equipId").value的方式，返回一个编号字符串，其中函数括号里的参数填写的应该是“编号”文本框在HTML里的Id。其他的用户填写信息也是以此类推。<br>
+![image](https://user-images.githubusercontent.com/72424079/154391604-f34b1105-ab20-4a33-bd85-527f55dfe1a7.png)
+然后，在addBaoXiu()函数里，会把<br>
+![image](https://user-images.githubusercontent.com/72424079/154392616-978dda12-306c-4635-8316-5b159bee7bd6.png)
+
+
 <br>注意，这是一个软件，不仅仅是一个程序，所以，下载源码后不一定能运行成功，要配置tomcat，还要安装配置数据库。如果遇到任何问题，欢迎留言提问。
